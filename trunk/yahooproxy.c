@@ -1,6 +1,6 @@
 /*
  * yahooproxy.c
- * Version 0.1 - 1 March 2010
+ * Version 0.2 - 2 June 2010
  *
  * Use of this program is bound by the GPLv2
  * Written by Ameir Abdeldayem
@@ -165,7 +165,7 @@ int main(void) {
         if (!fork()) { // this is the child process
             close(sockfd); // child doesn't need the listener
 
-            clientmsg(new_fd, "Welcome to Yahoo! IMAP Proxy!\r\n");
+            // clientmsg(new_fd, "Welcome to Yahoo! IMAP Proxy!\r\n");
 
             //  char buffer[256];
             int bufsize = 1024; /* a 1K buffer */
