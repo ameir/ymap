@@ -1,6 +1,6 @@
 /*
  * yahooproxy.c
- * Version 0.2 - 2 June 2010
+ * Version 0.3 - 2 June 2010
  *
  * Use of this program is bound by the GPLv2
  * Written by Ameir Abdeldayem
@@ -22,12 +22,10 @@
  * Known Issues/TODO:
  * - Sometimes messages don't load entirely due to the way I check for a complete
  * message from the server ("OK" and "completed")
- * - Some clients might send commands in uppercase; this program only checks for
- * a lowercase "login"
  * - Investigate SSL possibility
  * - Look into performance improvements
  * - Clean up code
- *  
+ *
  */
 
 #include <stdio.h>
@@ -273,7 +271,7 @@ int main(void) {
 
                     printf("[%s]:  %s\n", s, buffer);
 
-                    if (strstr(buffer, "login") != NULL) {
+                    if (strstr(buffer, "login") != NULL || strstr(buffer, "LOGIN") != NULL) {
 
                         // write to server
                         n = write(sd, "2 id (\"GUID\" \"1\")\r\n", strlen("2 id (\"GUID\" \"1\")\r\n"));
